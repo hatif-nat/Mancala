@@ -13,6 +13,10 @@ step player slot mancala | (slot > 6) || (slot < 0) = Out "0 Incorrect number of
 step First slot (Mancala s1 m1 s2 m2) = make_step First (check slot s1)  slot (Mancala s1 m1 s2 m2)
 step Second slot (Mancala s1 m1 s2 m2) = make_step Second (check slot s2) slot (Mancala s1 m1 s2 m2)
 
+check :: Slot -> [Int] -> String
+check slot l | (l !! (slot - 1)) > 0 = "correct step"
+             | otherwise = "0 Incorrect step"
+
 make_step :: Player -> String -> Slot -> Mancala -> Out
 make_step p "0 Incorrect step" s m = Out "0 Incorrect step" m
 make_step First str n (Mancala s1 m1 s2 m2) = put_out First (s1 !! (n - 1)) (n+1) (Mancala (toZero n s1) m1 s2 m2)

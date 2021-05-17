@@ -11,9 +11,6 @@ data Mancala  = Mancala {
 data Player = First | Second deriving (Eq, Show)
 type Slot = Int
 
-check :: Slot -> [Int] -> String
-check slot l | (l !! (slot - 1)) > 0 = "correct step"
-             | otherwise = "0 Incorrect step"
 
 data Out = Out String Mancala deriving (Eq, Show)
 data Info = Info String Out deriving (Eq, Show)
